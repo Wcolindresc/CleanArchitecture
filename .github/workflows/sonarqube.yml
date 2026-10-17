@@ -38,7 +38,7 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner
 
       - name: Restore dependencies
-        run: dotnet restore Clean.Architecture.slnx -p:NuGetAuditWarningsAsErrors=false
+        run: dotnet restore Clean.Architecture.slnx -p:TreatWarningsAsErrors=false
 
       - name: Begin SonarQube analysis
         env:
@@ -51,7 +51,7 @@ jobs:
             /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Build solution
-        run: dotnet build Clean.Architecture.slnx --no-incremental --no-restore -p:NuGetAuditWarningsAsErrors=false
+        run: dotnet build Clean.Architecture.slnx --no-incremental --no-restore -p:TreatWarningsAsErrors=false
 
       - name: Finish SonarQube analysis
         env:
